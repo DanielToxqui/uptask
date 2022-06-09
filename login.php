@@ -1,6 +1,9 @@
 <?php
-         include 'inc/funciones/funciones.php';
-         include 'inc/templates/header.php';
+    session_start();
+    include 'inc/funciones/funciones.php';
+    include 'inc/templates/header.php';
+    if(isset($_GET['cerrar_sesion'])) {
+    }
 ?>
 
     <div class="contenedor-formulario">
@@ -20,13 +23,12 @@
             </div>
 
             <div class="campo">
-                <a href="crear-cuenta.html">Crea una cuenta nueva</a>
+                <a href="crear-cuenta.php">Inicia sesion o Crea una cuenta nueva</a>
             </div>
         </form>
     </div>
 
     <?php
-         include 'inc/templates/footer.php';
+    include 'inc/templates/footer.php';
 ?>
-
 

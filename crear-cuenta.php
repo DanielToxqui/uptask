@@ -1,9 +1,7 @@
 <?php
-         include 'inc/funciones/funciones.php';
-         include 'inc/templates/header.php';
+    include 'inc/funciones/funciones.php';
+    include 'inc/templates/header.php';
 ?>
-
-
     <div class="contenedor-formulario">
         <h1>UpTask <span>Crear Cuenta</span></h1>
         <form id="formulario" class=" caja-login" method="post">
@@ -20,12 +18,11 @@
                 <input type="submit" class="boton" value="Crear cuenta">
             </div>
             <div class="campo">
-                <a href="login.html">Inicia Sesión Aquí</a>
+                <a href="login.php">Inicia Sesión Aquí</a>
             </div>
         </form>
     </div>
-    <script src="js/sweetalert2.all.min.js"></script>
 
     <?php
-         include 'inc/templates/footer.php';
+    include 'inc/templates/footer.php';
 ?>
