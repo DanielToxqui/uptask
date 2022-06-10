@@ -7,6 +7,10 @@ var listaProyectos = document.querySelector('ul#proyectos');
 function eventListeners() {
     //boton para crear el proyecto
     document.querySelector('.crear-proyecto a').addEventListener('click', nuevoProyecto);
+
+
+    // Boton para una nueva tarea
+    document.querySelector('.nueva-tarea').addEventListener('click', agregarTarea);
 }
 
 function nuevoProyecto(e) {
@@ -65,12 +69,27 @@ function guardarProyectoDB(nombreProyecto) {
                     // inyectar el html
                     var nuevoProyecto = document.createElement('li');
                     nuevoProyecto.innerHTML = `
-                    <a href="index.php?id_respuesta=${id_proyecto}"
-                        ${proyecto};
+                    <a href="index.php?id_proyecto=${id_proyecto}" id="${id_proyecto}">
+                        ${proyecto}
                     </a>
                 `;
-                //
+                // agregar al html
+                listaProyectos.appendChild(nuevoProyecto);
 
+                //enviar alerta
+                swal({
+                    title: 'Proyecto Creado',
+                    text: 'El proyecto: ' + proyecto + ' se creó correctamente',
+                    type: 'success'
+                })
+                .then(resultado => {
+                    // redireccionar a la nueva URL
+                    if(resultado.value) {
+                        window.location.href = 'index.php?id_proyecto=' + id_proyecto;
+                    }
+                })
+                   
+                
                 } else {
                     // Se actualizo o se elimino
                 }
@@ -88,4 +107,24 @@ function guardarProyectoDB(nombreProyecto) {
     //enviar request
     xhr.send(datos);
 
+}
+
+
+// agregar una nueva tarea al proyecto actual
+
+function agregarTarea(e) {
+    e.preventDefault();
+
+    var nombreTarea = document.querySelector('.nombre-tarea').value;
+    //Validar que el campo tien algo escrito 
+    
+    if(nombreTarea ===  '') {
+        swal({
+            title: 'Error',
+            text: 'una tarea no puede ir vacia',
+            type: 'error'
+        })
+    } else {
+        //la tarea tine algo, insertar en PHP
+    }
 }
